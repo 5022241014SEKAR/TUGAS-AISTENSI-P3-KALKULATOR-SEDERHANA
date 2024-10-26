@@ -1,0 +1,91 @@
+#include <stdio.h>
+
+int pertambahan(int a, int b) {
+    return a + b;
+}
+
+int pengurangan(int a, int b) {
+    return a - b;
+}
+
+int perkalian(int a, int b) {
+    return a * b;
+}
+
+float pembagian(int a, int b) {
+    if (b == 0) {
+        printf("Pembagian dengan nol tidak diperbolehkan.\n");
+        return 0;
+    }
+    return (float) a / b;
+}
+int FPB (int a, int b) {
+    while (b != 0) {
+        int sisa = a % b;
+        a = b;
+        b = sisa;
+    }
+    return a;
+}
+int KPK(int a, int b) {
+    return (a * b) / FPB(a, b);
+}
+int faktorial(int f) {
+    if (f < 0) {
+        printf("Faktorial tidak terdefinisi\n");
+        return -1;
+    }
+    int hasil = 1;
+    for (int i = 1; i <= f; i++) {
+        hasil *= i;
+    }
+    return hasil;
+}
+int kuadrat (int k){
+    return k*k;
+}
+
+int main() {
+    int a, b, f, choice;
+    printf("1. Pertambahan\n2. Pengurangan\n3. Perkalian\n4. Pembagian\n5. FPB\n6. KPK\n7. Faktorial\n8. Kuadrat\n");
+    printf("choice = ");
+    scanf("%d", &choice);
+    
+    printf("a = ");
+    scanf("%d", &a);
+    printf("b = ");
+    scanf("%d", &b);
+
+    if (choice == 1) {
+        printf("Hasil = %d\n", pertambahan(a, b));
+    } else if (choice == 2) {
+        printf("Hasil = %d\n", pengurangan(a, b));
+    } else if (choice == 3) {
+        printf("Hasil = %d\n", perkalian(a, b));
+    } else if (choice == 4) {
+        float result = pembagian(a, b);
+        if (b != 0) { 
+            printf("Hasil = %.2f\n", result);
+        }
+    } else if (choice == 5) {
+        printf("FPB kedua bilangan tersebut = %d\n", FPB(a, b));
+    } else if (choice == 6) {
+        printf("KPK kedua bilangan tersebut = %d\n", KPK(a, b));
+    } else if (choice == 7){
+        int FaktorialA = faktorial(a);
+        int FaktorialB = faktorial(b);
+        if (FaktorialA != -1) {
+        printf("Faktorial dari %d = %d\n", a, FaktorialA);
+        } if (FaktorialB != -1){
+        printf("Faktorial dari %d = %d", b, FaktorialB);
+        }
+    } else if (choice == 8){
+        int kuadratA = kuadrat(a);
+        int kuadratB = kuadrat(b);
+        printf("kuadrat dari %d = %d\n ", a, kuadratA);
+        printf("kuadrat dari %d = %d\n ", b, kuadratB);
+    } else {
+        printf("Tidak valid.\n");
+    }
+    return 0;
+}
